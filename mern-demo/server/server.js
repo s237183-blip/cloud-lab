@@ -9,7 +9,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Cấu hình CORS chi tiết để tránh lỗi chặn Origin trên Codespaces
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // ==========================================
@@ -80,7 +85,7 @@ app.delete('/api/students/:id', async (req, res) => {
   }
 });
 
-// Khởi chạy Server
-app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
+// Khởi chạy Server (bind vào 0.0.0.0 để lắng nghe môi trường cloud)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server đang chạy tại http://0.0.0.0:${PORT}`);
 });
