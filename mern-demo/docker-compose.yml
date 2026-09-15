@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mern-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb+srv://admin:admin123456@cluster0.puis2yr.mongodb.net/cloud_lab?retryWrites=true&w=majority
+    networks:
+      - mern-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: mern-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - mern-network
+
+networks:
+  mern-network:
+    driver: bridge

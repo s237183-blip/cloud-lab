@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-// URL API qua Vite Proxy (giữ nguyên để chạy không bị lỗi CORS)
-const API_URL = '/api/students';
+// Gọi trực tiếp đến Backend API chạy ở cổng 5000
+const API_URL = 'http://localhost:5000/api/students';
 
 function App() {
   const [students, setStudents] = useState([]);
