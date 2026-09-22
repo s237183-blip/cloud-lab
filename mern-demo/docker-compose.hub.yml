@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    image: zsleepyboo/mern-demo-backend:1.0
     ports:
       - "5000:5000"
     environment:
       - MONGODB_URI=mongodb+srv://admin:admin123456@cluster0.puis2yr.mongodb.net/cloud_lab?retryWrites=true&w=majority
 
   frontend:
-    build: ./client
+    image: zsleepyboo/mern-demo-frontend:2.0
     ports:
       - "3000:3000"
