@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // Gọi trực tiếp đến Backend API chạy ở cổng 5000
-const API_URL = 'http://localhost:5000/api/students';
+const API_URL = 'https://mern-backend-237183-V1.onrender.com/api/students';
 
 function App() {
   const [students, setStudents] = useState([]);
